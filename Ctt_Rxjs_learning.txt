@@ -1,0 +1,7 @@
+1. rxjs sendiri ada digunakan untuk mempermudah dalam manipulasi data yang bersifat async(http consume) ataupun sync dimana data
+yang didapat adalah value akhir ketika kita sudah manipulasi
+2. didalam rxjs ada observable dan observer dimana mereka terhubung dengan namanya subscription (subscribe) 
+3. lalu observer ini memiliki 3 implement methods yaitu "complete" , "error" dan "next/data"
+4. ketika methods "error" jalan disubscribe maka mthods "complete" tidak bisa jalan
+5. di observable ketika kita menggunakan function "next" saja tanpa function "complete" maka bisa menimbulkan infinate loop,
+   berimbas pada leak memory 
