@@ -5,3 +5,5 @@ yang didapat adalah value akhir ketika kita sudah manipulasi
 4. ketika methods "error" jalan disubscribe maka mthods "complete" tidak bisa jalan
 5. di observable ketika kita menggunakan function "next" saja tanpa function "complete" maka bisa menimbulkan infinate loop,
    berimbas pada leak memory 
+6. perbedaan throllete time dan interval , kalau interval itu melakukan emit di setiap interval yang sudah diset, sedangkan throllete
+   adalah melakukan skip time dari observable data sebelumnya baru dipanggil lagi emitnya

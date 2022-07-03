@@ -1,3 +1,5 @@
+
+/* use Observer dan Observable dan Subscription */
 const { fromEvent, throttleTime, map, subscribe, Observable } = rxjs;
 
 const clickButton = document.getElementById("clicked");
