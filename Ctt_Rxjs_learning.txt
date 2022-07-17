@@ -7,3 +7,8 @@ yang didapat adalah value akhir ketika kita sudah manipulasi
    berimbas pada leak memory 
 6. perbedaan throllete time dan interval , kalau interval itu melakukan emit di setiap interval yang sudah diset, sedangkan throllete
    adalah melakukan skip time dari observable data sebelumnya baru dipanggil lagi emitnya
+7. perbedaan "throlleteTime" dan "debounceTime" adalah, "debounceTime" itu ketika kita selesai mealukakan event, maka dia skip timenya/
+   nunggu time yang diset tadi seumpama 2 detik lalu dia baru manggil nilai yang terbaru.
+8. "distinctUntilChanged" adalah operator yang ada di rxjs dimana dia berfungsi untuk mengecek apakaha nilai yang sebelumnya dan baru 
+   memang berbeda atau sama. bila berbeda dia akan mengemit nilai yang terbaru tadi. tapi bila nilai lama dan baru sama maka nilai baru
+   tidak akan di emit
