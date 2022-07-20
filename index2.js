@@ -10,10 +10,14 @@ const {
     debounceTime,
     distinctUntilChanged,
     filter,
-    reduce
+    reduce,
+    pluck,
+    mergeMap
 } = rxjs;
 
 const inputUsername = document.getElementById('inputUsername');
+const inputOne = document.getElementById('inputOne');
+const inputTwo = document.getElementById('inputTwo');
 const observableData = interval(1000)
 const observableSubject = new Subject()
 const valueCollect = from([1,2,3,4,5]);
@@ -62,8 +66,8 @@ observableSubject.subscribe({
 observableSubject.next('A new data Piece')
 observableSubject.complete()
 
-/* use Debounce Time */
-const eventInput = fromEvent(inputUsername, 'input')
+/* use Debounce Time and distinctUntil Change */
+/* const eventInput = fromEvent(inputUsername, 'input')
 function eventInputTrigger(){
     eventInput.pipe(
         map((value)=> value.target.value),
@@ -74,7 +78,7 @@ function eventInputTrigger(){
         console.log('change input')
         console.log(value)
     })
-}
+} */
 
 /* use reduce Time */
 function reduceUsing(){
@@ -86,5 +90,38 @@ function reduceUsing(){
     })
 }
 
-reduceUsing()
+//* use  pluck*/
+const eventInput = fromEvent(inputUsername, 'input')
+function eventInputTrigger(){
+    eventInput.pipe(
+        pluck('target','value'),
+        debounceTime(2000),
+        distinctUntilChanged()
+    )
+    .subscribe((value)=>{
+        console.log('change input')
+        console.log(value)
+    })
+}
+
+/* use mergeMap */
+const eventInputOne = fromEvent(inputOne, 'input');
+const eventInputTwo = fromEvent(inputTwo, 'input');
+
+function eventMerge(){
+    eventInputOne.pipe(
+        mergeMap( eventOne => {
+            return eventInputTwo.map((eventTwo)=>{
+               return eventOne.target.value +' ' +eventTwo.target.value
+            })
+        })
+    )
+    .subscribe((data)=>{
+        console.log('data mergeMap')
+        console.log(data)
+    })
+}
+
+reduceUsing();
 eventInputTrigger();
+eventMerge();

@@ -12,3 +12,4 @@ yang didapat adalah value akhir ketika kita sudah manipulasi
 8. "distinctUntilChanged" adalah operator yang ada di rxjs dimana dia berfungsi untuk mengecek apakaha nilai yang sebelumnya dan baru 
    memang berbeda atau sama. bila berbeda dia akan mengemit nilai yang terbaru tadi. tapi bila nilai lama dan baru sama maka nilai baru
    tidak akan di emit
+9. "pluck" pluck mirip dengan map hanya saja dia return value yang lebih spesific nested. 
